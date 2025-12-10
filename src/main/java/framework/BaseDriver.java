@@ -1,6 +1,5 @@
 package framework;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -11,7 +10,7 @@ public class BaseDriver {
 
     public static WebDriver getDriver() {
         if (driver.get() == null) {
-            WebDriverManager.chromedriver().setup();
+            // WebDriverManager is no longer needed; Selenium Manager will handle the driver automatically.
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--remote-allow-origins=*");
             options.addArguments("--start-maximized");

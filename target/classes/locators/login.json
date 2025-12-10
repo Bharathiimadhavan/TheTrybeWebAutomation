@@ -1,0 +1,8 @@
+{
+  "emailField": "id=email",
+  "passwordField": "id=password",
+  "loginButton": "css=button[type='submit'], button.login",
+  "logoutLink": "xpath=//button[@data-testid='TextButton']//*[contains(.,'LOG OUT')]",
+  "usericon": "class=iconLinkWrapper",
+  "loggedInAccountName":"xpath=//*[@data-testid='UserInfo']//*[contains(.,'HELLO')]"
+}

@@ -1,19 +1,25 @@
 package pages;
 
 import framework.ConfigReader;
+import framework.LocatorManager;
+
 import org.openqa.selenium.By;
 
 public class LoginPage extends BasePage {
 
-    private By emailField = By.name("email");
-    private By passwordField = By.name("password");
-    private By loginButton = By.cssSelector("button[type='submit'], button.login");
-    private By logoutLink = By.xpath("//a[contains(.,'Logout') or contains(.,'Sign out')]");
+    private By emailField = LocatorManager.getLocator("login", "emailField");
+    private By passwordField = LocatorManager.getLocator("login", "passwordField");
+    private By loginButton = LocatorManager.getLocator("login", "loginButton");
+    private By loggedInAccountName = LocatorManager.getLocator("login", "loggedInAccountName");
+    private By logoutLink = LocatorManager.getLocator("login", "logoutLink");
 
     public void loginWithValidUser() {
-        driver.findElement(emailField).sendKeys(ConfigReader.get("username"));
-        driver.findElement(passwordField).sendKeys(ConfigReader.get("password"));
-        driver.findElement(loginButton).click();
+        waitForElementToBeClickable(emailField);
+        waitInSeconds(1);
+        sendKeys(emailField, ConfigReader.get("username"));
+        waitForElementToBeClickable(passwordField);
+        sendKeys(passwordField, ConfigReader.get("password"));
+        click(loginButton);
     }
 
     public boolean isLogoutVisible() {
@@ -21,6 +27,6 @@ public class LoginPage extends BasePage {
     }
 
     public void logout() {
-        driver.findElement(logoutLink).click();
+        click(logoutLink);
     }
 }

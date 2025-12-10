@@ -20,6 +20,7 @@ public class LoginSteps {
         homePage.openLogin();
         loginPage = new LoginPage();
         log.info("Opened login page");
+        
     }
 
     @When("user logs in using valid credentials")
@@ -29,7 +30,7 @@ public class LoginSteps {
         log.info("User submitted login form");
     }
 
-    @Then("user should be logged in")
+    @Then("user should be logged in successfully")
     public void user_should_be_logged_in() {
         Assert.assertTrue(accountPage.isLoggedIn(), "User is not logged in");
         log.info("Login successful");

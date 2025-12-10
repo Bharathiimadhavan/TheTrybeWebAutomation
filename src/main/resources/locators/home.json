@@ -1,0 +1,8 @@
+{
+  "searchBox": "css=input[type='search'], input[placeholder*='Search'], input[name*='search']",
+  "searchButton": "css=button[type='submit'], button.search-btn",
+  "testloginlink": "xpath=//a[contains(.,'Login') or contains(.,'Sign in')]",
+  "loginLink": "xpath=//*[@class='accountCTA']",
+  "wishlistLink": "xpath=//a[contains(.,'Wishlist')]",
+  "menShoesCategory": "xpath=//a[contains(.,'Men') and contains(.,'Shoes')]"
+}

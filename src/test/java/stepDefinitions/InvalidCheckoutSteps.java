@@ -1,5 +1,3 @@
-
-```java
 package stepDefinitions;
 
 import framework.LoggerHelper;

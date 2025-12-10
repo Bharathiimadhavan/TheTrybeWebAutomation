@@ -14,13 +14,15 @@ import org.openqa.selenium.WebDriver;
 
 public class Hooks {
 
-    private static WebDriver driver;
     private final Logger log = LoggerHelper.getLogger(Hooks.class);
+
+    static {
+        ConfigReader.loadConfig();
+    }
 
     @Before
     public void setUp() {
-        ConfigReader.loadConfig();
-        driver = BaseDriver.getDriver();
+        BaseDriver.getDriver();
         log.info("Browser launched for scenario");
     }
 
@@ -28,6 +30,7 @@ public class Hooks {
     public void tearDown(Scenario scenario) {
         if (scenario.isFailed()) {
             try {
+                WebDriver driver = BaseDriver.getDriver();
                 byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
                 scenario.attach(screenshot, "image/png", "Failed Screenshot");
                 ScreenshotUtil.takeScreenshot(driver, scenario.getName());

@@ -1,35 +1,51 @@
 package pages;
 
 import framework.ConfigReader;
+import framework.LocatorManager;
 import org.openqa.selenium.By;
 
 public class HomePage extends BasePage {
 
-    private By searchBox = By.cssSelector("input[type='search'], input[placeholder*='Search'], input[name*='search']");
-    private By searchButton = By.cssSelector("button[type='submit'], button.search-btn");
-    private By loginLink = By.xpath("//a[contains(.,'Login') or contains(.,'Sign in')]");
-    private By wishlistLink = By.xpath("//a[contains(.,'Wishlist')]");
-    private By menShoesCategory = By.xpath("//a[contains(.,'Men') and contains(.,'Shoes')]");
+    private By searchBox = LocatorManager.getLocator("home", "searchBox");
+    private By searchButton = LocatorManager.getLocator("home", "searchButton");
+    private By loginLink = LocatorManager.getLocator("home", "loginLink");
+    private By wishlistLink = LocatorManager.getLocator("home", "wishlistLink");
+    private By menShoesCategory = LocatorManager.getLocator("home", "menShoesCategory");
 
     public void open() {
         driver.get(ConfigReader.get("url"));
+        handleWelcomePopup();
+    }
+
+    private void handleWelcomePopup() {
+        try {
+            By popupCloseButton = By.id("closeButton");
+            waitInSeconds(1);
+            waitForElementToBeVisible(popupCloseButton);
+            waitForElementToBeClickable(popupCloseButton);
+            click(popupCloseButton);
+        } catch (Exception e) {
+            // Popup may not appear, so we can ignore the exception
+        }
     }
 
     public void searchFor(String keyword) {
+        waitForElementToBeVisible(searchBox);
         driver.findElement(searchBox).clear();
-        driver.findElement(searchBox).sendKeys(keyword);
-        driver.findElement(searchButton).click();
+        sendKeys(searchBox, keyword);
+        click(searchButton);
     }
 
     public void openLogin() {
-        driver.findElement(loginLink).click();
+        click(loginLink);
+        waitInSeconds(1);
     }
 
     public void openWishlist() {
-        driver.findElement(wishlistLink).click();
+        click(wishlistLink);
     }
 
     public void openMenShoesCategory() {
-        driver.findElement(menShoesCategory).click();
+        click(menShoesCategory);
     }
 }
