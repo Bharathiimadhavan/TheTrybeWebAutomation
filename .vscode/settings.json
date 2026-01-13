@@ -1,9 +1,0 @@
-{
-  "cucumber.features": [
-    "src/test/resources/features/**/*.feature"
-  ],
-  "cucumber.glue": [
-    "src/test/java/stepDefinitions",
-    "src/test/java/hooks"
-  ]
-}

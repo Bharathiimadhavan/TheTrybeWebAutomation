@@ -4,6 +4,8 @@ import framework.LoggerHelper;
 import io.cucumber.java.en.*;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
+
+import context.TestContext;
 import pages.AccountPage;
 import pages.HomePage;
 import pages.LoginPage;
@@ -11,14 +13,21 @@ import pages.LoginPage;
 public class LoginSteps {
 
     private final Logger log = LoggerHelper.getLogger(LoginSteps.class);
-    private HomePage homePage = new HomePage();
+    private TestContext testContext;
+
+        public LoginSteps(TestContext testContext) {
+        this.testContext = testContext;
+        }
+        
+    //private HomePage homePage = new HomePage();
     private LoginPage loginPage;
     private AccountPage accountPage;
 
     @When("user opens login page")
     public void user_opens_login_page() {
-        homePage.openLogin();
-        loginPage = new LoginPage();
+        //homePage.openLogin();
+        //loginPage = new LoginPage();
+        testContext.getHomePage().open();
         log.info("Opened login page");
         
     }
@@ -26,7 +35,8 @@ public class LoginSteps {
     @When("user logs in using valid credentials")
     public void user_logs_in_using_valid_credentials() {
         loginPage.loginWithValidUser();
-        accountPage = new AccountPage();
+        //accountPage = new AccountPage();
+        accountPage = testContext.getAccountPage();
         log.info("User submitted login form");
     }
 

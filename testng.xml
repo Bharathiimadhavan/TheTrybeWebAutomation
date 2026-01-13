@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <!-- <suite name="Cucumber Suite" parallel="tests" thread-count="2"> -->
-<suite name="Cucumber Suite" parallel="false" thread-count="1">
-    <listeners>
-        <listener class-name="listeners.TestListener"/>
-    </listeners>
+<suite name="Cucumber Suite" parallel="none" thread-count="1">
     <test name="Cucumber Tests">
         <!-- <parameter name="tag" value="@regression"/> -->
         <!-- The tag parameter is now supplied by the maven-surefire-plugin in pom.xml -->

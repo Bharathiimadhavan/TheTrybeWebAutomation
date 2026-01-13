@@ -1,8 +1,11 @@
 {
   "searchBox": "css=input[type='search'], input[placeholder*='Search'], input[name*='search']",
-  "searchButton": "css=button[type='submit'], button.search-btn",
+  "searchButton": "xpath=//*[@data-icon='magnifying-glass']",
+  "searchResults": "xpath=//*[contains(text(), 'Search Results')]",
   "testloginlink": "xpath=//a[contains(.,'Login') or contains(.,'Sign in')]",
   "loginLink": "xpath=//*[@class='accountCTA']",
-  "wishlistLink": "xpath=//a[contains(.,'Wishlist')]",
-  "menShoesCategory": "xpath=//a[contains(.,'Men') and contains(.,'Shoes')]"
+  "wishlistLink": "xpath=//a[@title='My Wishlist']",
+  "menShoesCategory": "xpath=//a[contains(.,'Men') and contains(.,'Shoes')]",
+  "wishlistHeaderIcon": "xpath=//a[@title='My Wishlist']",
+  "wishlistPageHeading": "xpath=//div[@class='wishlistHeading']"
 }

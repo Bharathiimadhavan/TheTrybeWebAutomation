@@ -1,10 +1,15 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 import framework.LocatorManager;
 
 public class AccountPage extends BasePage {
+
+    public AccountPage(WebDriver driver) {
+        super(driver);
+    }
 
     private By accountName = By.cssSelector(".account-name, .woocommerce-MyAccount-content");
     private By ordersLink = By.linkText("Orders");

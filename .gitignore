@@ -1,0 +1,20 @@
+# Generated reports
+test-output/
+allure-results/
+.allure/
+
+# Log files
+logs/
+
+# Screenshots
+screenshots/
+
+# IDE files
+.idea/
+*.iml
+
+# Maven build files
+target/
+
+# VSCode files
+.vscode/

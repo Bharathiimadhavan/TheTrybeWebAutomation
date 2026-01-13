@@ -1,0 +1,6 @@
+{
+  "plpAllProductTiles": "xpath=//div[contains(@class,'ProductTile-module_productTileInfo')]",
+  "productNameInThePLPTile": "xpath=//div[contains(@class,'ProductTile-module_productName')]",
+  "firstProductInSearchResults": "xpath=(//div[contains(@class,'ProductTile-module_productTileImage')])[1]",
+  "wishlistinPLP": "xpath=//*[contains(@class,'ProductTile-module_wishlistWrapper')]//button[@title='Add to Wishlist']"
+}

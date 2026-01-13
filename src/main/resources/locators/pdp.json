@@ -1,0 +1,13 @@
+{
+  "afterPayLogoInPDP": "xpath=//img[@alt='AfterPay']",
+  "sizeToggles": "xpath=//*[@data-testid='sizeToggles']",
+  "addToCartButton": "xpath=//button[@data-testid='addtocart']",
+  "findInStoreButton": "xpath=//button[@title='Find in Store']",
+  "productTitleInPDP": "xpath=//div[@data-testid='Description']//h1",
+  "price": "xpath=(//div[contains(text(),'$')])[1]",
+  "sizeButton": "xpath=//div[@data-testid='sizeToggles']//button[normalize-space()='%s']",
+  "addToBagNotification": "xpath=//*[@data-testid='sideBar']",
+  "goToBagButton": "xpath=//*[text()='Go to Bag']",
+  "wishlistPDP": "xpath=(//button[@title='Add to Wishlist' and @type='button'])[1]",
+  "removeFromWishlistPDP": "xpath=(//div/button[@id='addToBag']//following::div/button[@title='Remove from Wishlist'])"
+}

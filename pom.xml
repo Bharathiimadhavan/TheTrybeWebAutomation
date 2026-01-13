@@ -1,152 +1,198 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.thetrybe</groupId>
-    <artifactId>TheTrybeWebAutomation</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <name>TheTrybe Automation Framework</name>
+<groupId>com.thetrybe</groupId>
+<artifactId>TheTrybeWebAutomation</artifactId>
+<version>1.0-SNAPSHOT</version>
+<name>TheTrybe Automation Framework</name>
 
-    <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <allure.version>2.24.0</allure.version>
-    </properties>
+<properties>
+<maven.compiler.source>21</maven.compiler.source>
+<maven.compiler.target>21</maven.compiler.target>
+<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+</properties>
 
-    <dependencies>
-        <!-- Selenium -->
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>4.25.0</version>
-        </dependency>
+<dependencies>
+<!-- Selenium -->
+<dependency>
+<groupId>org.seleniumhq.selenium</groupId>
+<artifactId>selenium-java</artifactId>
+<version>4.25.0</version>
+</dependency>
 
-        <!-- TestNG -->
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>7.10.2</version>
-            <scope>test</scope>
-        </dependency>
+<!-- TestNG -->
+<dependency>
+<groupId>org.testng</groupId>
+<artifactId>testng</artifactId>
+<version>7.10.2</version>
+<scope>test</scope>
+</dependency>
 
-        <!-- Cucumber -->
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-java</artifactId>
-            <version>7.15.0</version>
-        </dependency>
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-testng</artifactId>
-            <version>7.15.0</version>
-        </dependency>
+<!-- Cucumber -->
+<dependency>
+<groupId>io.cucumber</groupId>
+<artifactId>cucumber-java</artifactId>
+<version>7.15.0</version>
+</dependency>
+<dependency>
+<groupId>io.cucumber</groupId>
+<artifactId>cucumber-testng</artifactId>
+<version>7.15.0</version>
+</dependency>
+<dependency>
+<groupId>io.cucumber</groupId>
+<artifactId>cucumber-core</artifactId>
+<version>7.15.0</version>
+</dependency>
+<dependency>
+<groupId>io.cucumber</groupId>
+<artifactId>cucumber-picocontainer</artifactId>
+<version>7.15.0</version>
+<scope>test</scope>
+</dependency>
 
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-core</artifactId>
-            <version>7.15.0</version>
-        </dependency>
+<!-- Allure-Cucumber7-JVM Adapter -->
+<dependency>
+<groupId>io.qameta.allure</groupId>
+<artifactId>allure-cucumber7-jvm</artifactId>
+<version>2.28.0</version>
+</dependency>
 
-        <!-- <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-junit-platform-engine</artifactId>
-            <version>7.15.0</version>
-        </dependency> -->
+<!-- Extent Reports -->
+<dependency>
+<groupId>com.aventstack</groupId>
+<artifactId>extentreports</artifactId>
+<version>5.1.2</version>
+</dependency>
+<dependency>
+<groupId>tech.grasshopper</groupId>
+<artifactId>extentreports-cucumber7-adapter</artifactId>
+<version>1.14.0</version>
+</dependency>
 
-        <!-- Allure -->
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-testng</artifactId>
-            <version>${allure.version}</version>
-        </dependency>
+<!-- Log4j2 -->
+<dependency>
+<groupId>org.apache.logging.log4j</groupId>
+<artifactId>log4j-core</artifactId>
+<version>2.24.2</version>
+</dependency>
+<dependency>
+<groupId>org.apache.logging.log4j</groupId>
+<artifactId>log4j-api</artifactId>
+<version>2.24.2</version>
+</dependency>
 
-        <!-- Extent Reports -->
-        <dependency>
-            <groupId>com.aventstack</groupId>
-            <artifactId>extentreports</artifactId>
-            <version>5.1.2</version>
-        </dependency>
+<!-- Commons IO -->
+<dependency>
+<groupId>commons-io</groupId>
+<artifactId>commons-io</artifactId>
+<version>2.16.1</version>
+</dependency>
 
-        <!-- Log4j2 -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.24.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>2.24.2</version>
-        </dependency>
 
-        <!-- Commons IO -->
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.16.1</version>
-        </dependency>
+<!-- MySQL (optional DB utility) -->
+<dependency>
+<groupId>mysql</groupId>
+<artifactId>mysql-connector-java</artifactId>
+<version>8.0.33</version>
+</dependency>
 
-        <!-- Allure for Cucumber JVM -->
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-cucumber7-jvm</artifactId>
-            <version>2.24.0</version>
-        </dependency>
+<!-- Jackson -->
+<dependency>
+<groupId>com.fasterxml.jackson.core</groupId>
+<artifactId>jackson-databind</artifactId>
+<version>2.17.2</version>
+</dependency>
 
-        <!-- MySQL (optional DB utility) -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.33</version>
-        </dependency>
+<!-- SLF4J binding for Log4j2 -->
+<dependency>
+<groupId>org.apache.logging.log4j</groupId>
+<artifactId>log4j-slf4j-impl</artifactId>
+<version>2.24.2</version>
+<scope>test</scope>
+</dependency>
+</dependencies>
 
-        <!-- Jackson -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.17.2</version>
-        </dependency>
-    </dependencies>
+<build>
+<plugins>
+<plugin>
+<artifactId>maven-compiler-plugin</artifactId>
+<version>3.13.0</version>
+<configuration>
+<source>21</source>
+<target>21</target>
+</configuration>
+</plugin>
 
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.13.0</version>
-                <configuration>
-                    <source>21</source>
-                    <target>21</target>
-                </configuration>
-            </plugin>
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-surefire-plugin</artifactId>
+<version>3.1.2</version>
+<configuration>
+<systemPropertyVariables>
+<allure.results.directory>${project.basedir}/allure-results</allure.results.directory>
+<cucumber.filter.tags>${cucumber.filter.tags}</cucumber.filter.tags>
+<cucumber.options>${cucumber.options}</cucumber.options>
+</systemPropertyVariables>
+<suiteXmlFiles>
+<suiteXmlFile>testng.xml</suiteXmlFile>
+</suiteXmlFiles>
+<!-- This will automatically re-run a failing scenario up to 2 times -->
+<!-- <rerunFailingTestsCount>2</rerunFailingTestsCount> -->
+</configuration>
+</plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.1.2</version>
-                <configuration>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>testng.xml</suiteXmlFile>
-                    </suiteXmlFiles>
-                    <!-- This will automatically re-run a failing scenario up to 2 times -->
-                    <rerunFailingTestsCount>2</rerunFailingTestsCount>
-                </configuration>
-            </plugin>
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-clean-plugin</artifactId>
+<version>3.2.0</version>
+<configuration>
+<failOnError>false</failOnError>
+</configuration>
+</plugin>
+<plugin>
+<groupId>io.qameta.allure</groupId>
+<artifactId>allure-maven</artifactId>
+<version>2.12.0</version>
+<configuration>
+<reportVersion>2.28.0</reportVersion>
+<resultsDirectory>${project.basedir}/allure-results</resultsDirectory>
+</configuration>
+<executions>
+<execution>
+<id>allure-report</id>
+<phase>verify</phase>
+<goals>
+<goal>report</goal>
+</goals>
+</execution>
+</executions>
+</plugin>
+</plugins>
+</build>
 
-            <plugin>
-                <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-maven</artifactId>
-                <version>2.12.0</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>3.2.0</version>
-                <configuration>
-                    <failOnError>false</failOnError>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+<profiles>
+    <profile>
+        <id>debug</id>
+        <activation>
+            <property>
+                <name>debug</name>
+                <value>true</value>
+            </property>
+        </activation>
+        <build>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <configuration>
+                        <argLine>-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005</argLine>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </build>
+    </profile>
+</profiles>
 </project>

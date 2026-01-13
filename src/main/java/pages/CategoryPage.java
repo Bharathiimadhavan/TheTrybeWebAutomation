@@ -1,10 +1,15 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import java.util.List;
 
 public class CategoryPage extends BasePage {
+
+    public CategoryPage(WebDriver driver) {
+        super(driver);
+    }
 
     private By productCards = By.cssSelector(".product-card, .product-item");
     private By productPrices = By.cssSelector(".price, .amount");

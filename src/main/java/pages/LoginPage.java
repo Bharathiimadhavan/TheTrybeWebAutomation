@@ -4,8 +4,13 @@ import framework.ConfigReader;
 import framework.LocatorManager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 public class LoginPage extends BasePage {
+
+    public LoginPage(WebDriver driver) {
+        super(driver);
+    }
 
     private By emailField = LocatorManager.getLocator("login", "emailField");
     private By passwordField = LocatorManager.getLocator("login", "passwordField");

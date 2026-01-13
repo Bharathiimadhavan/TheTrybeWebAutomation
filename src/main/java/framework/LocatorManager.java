@@ -47,6 +47,30 @@ public class LocatorManager {
         }
     }
 
+    public static By getDynamicLocator(String page, String elementName, String... args) {
+        Map<String, String> pageLocators = locatorsCache.computeIfAbsent(page, LocatorManager::loadLocators);
+        String locatorValue = pageLocators.get(elementName);
+
+        if (locatorValue == null) {
+            throw new IllegalArgumentException("No locator found for element: " + elementName + " on page: " + page);
+        }
+
+        String formattedLocatorValue = String.format(locatorValue, (Object[]) args);
+
+        String[] parts = formattedLocatorValue.split("=", 2);
+        String strategy = parts[0];
+        String value = parts[1];
+
+        switch (strategy.toLowerCase()) {
+            case "xpath":
+                return By.xpath(value);
+            case "css":
+                return By.cssSelector(value);
+            default:
+                throw new IllegalArgumentException("Unsupported dynamic locator strategy: " + strategy);
+        }
+    }
+
     private static Map<String, String> loadLocators(String page) {
         String filePath = LOCATORS_DIR + page.toLowerCase() + ".json";
         try (InputStream inputStream = LocatorManager.class.getResourceAsStream(filePath)) {

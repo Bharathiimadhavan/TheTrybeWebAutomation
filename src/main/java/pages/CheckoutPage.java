@@ -1,8 +1,13 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 public class CheckoutPage extends BasePage {
+
+    public CheckoutPage(WebDriver driver) {
+        super(driver);
+    }
 
     private By billingFirstName = By.id("billing_first_name");
     private By billingLastName = By.id("billing_last_name");

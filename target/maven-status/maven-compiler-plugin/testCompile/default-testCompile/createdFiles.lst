@@ -1,8 +1,0 @@
-stepDefinitions\CheckoutSteps.class
-stepDefinitions\LoginSteps.class
-listeners\TestListener.class
-runners\TestRunner.class
-stepDefinitions\WishlistSteps.class
-stepDefinitions\FiltersSteps.class
-stepDefinitions\InvalidCheckoutSteps.class
-hooks\Hooks.class

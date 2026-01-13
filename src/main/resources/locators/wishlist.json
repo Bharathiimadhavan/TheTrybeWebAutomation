@@ -1,0 +1,7 @@
+{
+  "plpAllProductTiles": "xpath=//div[contains(@class,'ProductTile-module_productTileInfo')]",
+  "productNamesInTheWishlist": "xpath=//div[contains(@class,'ProductTile-module_wishlistProductTitle')]/div",
+  "firstProductInSearchResults": "xpath=(//div[contains(@class,'ProductTile-module_productTileImage')])[1]",
+  "wishlistinPLP": "xpath=//*[contains(@class,'ProductTile-module_wishlistWrapper')]//button[@title='Add to Wishlist']",
+  "productSizeInputInWishlist": "xpath=//div[contains(@class,'ProductTile-module_wishlistProductTitle')]/div[contains(translate(text(),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'%s')]/following::input[1]"
+}
