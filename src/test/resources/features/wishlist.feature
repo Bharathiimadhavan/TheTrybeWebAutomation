@@ -1,5 +1,5 @@
 @regression
-Feature: Wishlist
+Feature: As a user, I want to I Wishlist a product and validate in the Wishlist page.
 
   @wishlist @passed
   Scenario Outline: Wishlist_001 Add first searched product to wishlist from PLP

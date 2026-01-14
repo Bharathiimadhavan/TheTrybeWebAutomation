@@ -17,6 +17,7 @@ public class TestContext {
     private AccountPage accountPage;
     private LoginPage loginPage;
     private WishlistPage wishlistPage;
+    private ProductListingPage productListPage;
 
     public WebDriver getDriver() {
         if (driver == null) {
@@ -55,6 +56,13 @@ public class TestContext {
             productDetailPage = new ProductDetailPage(getDriver());
         }
         return productDetailPage;
+    }
+
+    public ProductListingPage getProductListPage() {
+        if (productListPage == null) {
+            productListPage = new ProductListingPage(getDriver());
+        }
+        return productListPage;
     }
 
     public CartPage getCartPage() {
