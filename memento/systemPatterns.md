@@ -23,3 +23,5 @@ graph TD
 - **Driver Management:** A `BaseDriver` class uses a `ThreadLocal` `WebDriver` instance. This ensures thread safety, allowing for parallel test execution in the future.
 - **Behavior-Driven Development (BDD):** Cucumber is used to write tests in a Gherkin `Given-When-Then` format, making tests more descriptive and business-focused.
 - **Configuration Management:** A `ConfigReader` class loads environment-specific settings (like URLs) from `.properties` files.
+- **Robust Interaction Model:** Core interaction methods (`click`, `jsClick`, `waitForElement...`) are centralized in `BasePage.java`. These methods include automatic scrolling and a resilient, just-in-time popup handler (`handleJoinPopup`) to ensure test stability against intermittent UI elements.
+- **Soft Assertion Framework:** The project uses a custom `AssertHelper` built around TestNG's `SoftAssert`. All validations should use `AssertHelper` methods (`assertTrue`, `assertEquals`, etc.) to prevent silent failures and ensure all test steps are executed, with a consolidated error report at the end of the scenario.

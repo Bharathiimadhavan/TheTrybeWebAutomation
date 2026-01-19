@@ -1,18 +1,14 @@
 # Active Context: TheTrybe Web Automation
 
 ## 1. Current Work Focus
-The primary task was to resolve an issue preventing a user from running or debugging a single scenario.
+The primary task was to implement a new `Cart_001` scenario and address multiple, cascading framework stability issues that were causing test failures.
 
 ## 2. Recent Changes
-- **Fixed PDP Size Selection Bug**: Resolved a `NoSuchElementException` on the Product Detail Page by making the size button locator more robust. The XPath in `locators/pdp.json` was updated to use `normalize-space()` to handle variations in whitespace.
-- **Fixed Wishlist Case-Sensitivity Bug**: Resolved a `NoSuchElementException` in the wishlist test by making the product title locator case-insensitive.
-  - The XPath in `locators/wishlist.json` was updated to use the `translate()` function.
-  - The `getSelectedSizeForProduct` method in `WishlistPage.java` was updated to pass a lowercase product name to the locator.
-- **Refactored `TestContext`**: Removed `productName` and `selectedSize` fields from `TestContext.java`.
-- **Refactored Gherkin Scenario**: Consolidated the wishlist validation into a single, more descriptive step.
-- **Consolidated Step Definition**: Created a single step definition in `WishlistSteps.java` for product and size validation.
-- **Architectural Improvement**: Moved test data from the shared context to the feature file.
-- **Improved Test Execution**: Refactored `TestRunner.java` to remove a hardcoded tag, enabling flexible scenario execution via IDE or command line. Enabled parallel execution to speed up test runs.
+- **Implemented `Cart_001` Scenario:** Added a new feature and corresponding step definitions to test adding a product with a specific size to the cart.
+- **Implemented Centralized Popup Handling:** A `handleJoinPopup` method was added to `BasePage.java` to automatically and resiliently close the intermittent "Join The Trybe" popup. This method is called from all core interaction methods.
+- **Implemented Soft Assertions:** Refactored hard assertions (`org.testng.Assert`) to use the project's custom `AssertHelper`. This prevents silent test failures and ensures all assertion errors are collected and reported at the end of a scenario.
+- **Improved Click Resilience:** Enhanced the core `click` and `jsClick` methods in `BasePage.java` to automatically scroll elements into view before interaction, preventing failures for off-screen elements.
+- **Stabilized Test Execution:** The combination of the above fixes has made the test suite significantly more robust and reliable.
 
 ## 3. Next Steps
-- The test execution framework has been improved, allowing for flexible and parallel execution of scenarios. The project is ready for running targeted tests or a full validation suite.
+- The "Add to Cart" flow is now stable and well-tested. The framework itself is much more resilient. The project is in a good state to continue building out more feature tests, such as the full checkout flow or expanding wishlist validations.
