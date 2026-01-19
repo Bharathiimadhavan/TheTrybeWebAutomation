@@ -29,9 +29,11 @@ public class HomePage extends BasePage {
     }
 
     public void searchFor(String keyword) {
-        // With the popup reliably handled, a standard click should now work.
-        waitForElementToBeVisible(searchButton);
+        // First, click the searchBox to ensure it is active.
+        waitForElementToBeClickable(searchButton);
         click(searchButton);
+
+        // Now that the search input is active, clear it and send the keys.
         waitForElementToBeVisible(searchBox);
         driver.findElement(searchBox).clear();
         sendKeys(searchBox, keyword);

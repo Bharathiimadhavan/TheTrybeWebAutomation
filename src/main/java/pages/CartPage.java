@@ -31,4 +31,10 @@ public class CartPage extends BasePage {
     public void proceedToCheckout() {
         driver.findElement(LocatorManager.getLocator("cart", "checkoutButton")).click();
     }
+
+    public boolean isCartPageDisplayed() {
+        By summaryTitle = LocatorManager.getLocator("cart", "summaryTitle");
+        waitForElementToBeVisible(summaryTitle);
+        return driver.findElement(summaryTitle).isDisplayed();
+    }
 }

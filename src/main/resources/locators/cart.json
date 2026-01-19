@@ -2,5 +2,6 @@
   "cartItemContainer": "xpath=.//div[(@data-testid= 'cartItemSection')]",
   "productNameInCart": "xpath=//div[contains(@class, 'ProductTile-module_cartProductName')]",
   "productSizeInCart": "xpath=.//div[contains(@class, 'ProductTile-module_productSize__')]",
-  "checkoutButton": "xpath=//button[text()='Checkout']"
+  "checkoutButton": "xpath=//button[text()='Checkout']",
+  "summaryTitle": "xpath=//p[text()='Summary']"
 }

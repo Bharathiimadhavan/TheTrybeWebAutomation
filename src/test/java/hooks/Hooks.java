@@ -1,6 +1,7 @@
 package hooks;
 
 import context.TestContext;
+import framework.AssertHelper;
 import framework.ConfigReader;
 import framework.LoggerHelper;
 import io.cucumber.java.After;
@@ -27,8 +28,9 @@ public class Hooks {
 
     @Before
     public void setUp() {
+        AssertHelper.initialize();
         testContext.getDriver();
-        log.info("Browser launched for scenario");
+        log.info("Browser launched and soft assert initialized for scenario");
     }
 
     @AfterStep
@@ -47,7 +49,11 @@ public class Hooks {
 
     @After
     public void tearDown(Scenario scenario) {
-        testContext.quitDriver();
-        log.info("Browser closed for scenario: " + scenario.getName());
+        try {
+            AssertHelper.assertAll();
+        } finally {
+            testContext.quitDriver();
+            log.info("Browser closed and assertions verified for scenario: " + scenario.getName());
+        }
     }
 }

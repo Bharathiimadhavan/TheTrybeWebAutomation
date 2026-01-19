@@ -30,9 +30,16 @@ public class ProductDetailPage extends BasePage {
     public void clickGoToBag() {
         By notificationSidebar = LocatorManager.getLocator("pdp", "addToBagNotification");
         By goToBagButton = LocatorManager.getLocator("pdp", "goToBagButton");
+
+        // First, ensure the mini-cart (notification sidebar) is visible.
         waitForElementToBeVisible(notificationSidebar);
+
+        // THEN, explicitly wait for the "Go to Bag" button inside it to be clickable.
+        // This is the crucial step to prevent the silent failure.
         waitForElementToBeClickable(goToBagButton);
-        click(goToBagButton);
+
+        // Now, perform the click using jsClick for added resilience.
+        jsClick(goToBagButton);
     }
     public String getProductName() {
         return driver.findElement(productTitleInPDP).getText();
@@ -68,6 +75,11 @@ public class ProductDetailPage extends BasePage {
         click(sizeLocator);
     }
 
+public boolean isMiniCartDisplayed() {
+        By notificationSidebar = LocatorManager.getLocator("pdp", "addToBagNotification");
+        waitForElementToBeVisible(notificationSidebar);
+        return driver.findElement(notificationSidebar).isDisplayed();
+    }
     public boolean afterPayLogoDisplayed()    {
         return driver.findElement(afterPayLogoInPDP).isDisplayed();
     }

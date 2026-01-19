@@ -11,7 +11,7 @@ Feature: Product Listing Page
 
     Examples:
       | category    | url                                   | heading                |
-      | New         | /kids-new-arrivals.html                  | Kids New Arrivals                    |
+      | New         | /kids-new-arrivals.html               | Kids New Arrivals      |
       | Sport       | /kids-shoes/sport.html                | Sport                  |
       | School      | /kids-shoes/kids-school-shoes.html    | Kids School Shoes      |
       | Style       | /kids-shoes/style.html                | Style                  |
@@ -27,9 +27,9 @@ Feature: Product Listing Page
       | category    | url                                   | heading                |
       | New         | /kids-new-arrivals.html               | Kids New Arrivals      |
       | Sport       | /kids-shoes/sport.html                | Sport                  |
-      | School      | /kids-shoes/kids-school-shoes.html    | Kids School Shoes      |
+      | school      | /kids-shoes/kids-school-shoes.html    | Kids School Shoes      |
       | Style       | /kids-shoes/style.html                | Style                  |
       | Size        | /kids-shoes.html                      | Kids Shoes             |
       | Accessories | /accessories.html                     | Accessories            |
-      | Brands      | /our-brands                           | Brands                 |
+      | brands      | /our-brands                           | Brands                 |
       | Sale        | /trybe-sale.html                      | Sale                   |

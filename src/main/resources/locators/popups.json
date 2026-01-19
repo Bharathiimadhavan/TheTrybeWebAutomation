@@ -1,4 +1,4 @@
 {
-  "modalOverlay": "xpath=//div[@data-testid='modal-overlay']",
-  "joinTheTrybePopupCloseButton": "xpath=//*[@id='closeButton']"
+  "joinTheTrybePopup": "xpath=//div[@data-testid='modal-overlay']",
+  "joinTheTrybePopupCloseButton": "xpath=//div[@id='closeButton']/button"
 }

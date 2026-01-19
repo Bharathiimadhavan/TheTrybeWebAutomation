@@ -33,33 +33,29 @@ public abstract class BasePage {
     }
 
     protected void waitForElementToBeClickable(By locator) {
-        try {
-            wait.until(ExpectedConditions.elementToBeClickable(locator));
-        } catch (TimeoutException e) {
-            handleModalOverlay();
-            wait.until(ExpectedConditions.elementToBeClickable(locator));
-        }
+        handleJoinPopup();
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
     protected void waitForElementToBeVisible(By locator) {
-        try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-        } catch (TimeoutException e) {
-            handleModalOverlay();
-            wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-        }
+        handleJoinPopup();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     protected void click(By locator) {
+        handleJoinPopup();
         try {
             waitForElementToBeClickable(locator);
-            driver.findElement(locator).click();
+            WebElement element = driver.findElement(locator);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
+            element.click();
         } catch (StaleElementReferenceException e) {
             // Re-find the element and try again
-            driver.findElement(locator).click();
+            WebElement element = driver.findElement(locator);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
+            element.click();
         } catch (ElementClickInterceptedException e) {
-            // If a click is intercepted, handle the overlay and retry with a jsClick.
-            handleModalOverlay();
+            // If a click is intercepted, try a jsClick as a fallback.
             jsClick(locator);
         }
     }
@@ -71,14 +67,15 @@ public abstract class BasePage {
      * @param locator The locator of the element to be clicked.
      */
     protected void jsClick(By locator) {
+        handleJoinPopup();
         try {
             waitForElementToBeVisible(locator);
             WebElement element = driver.findElement(locator);
-            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'}); arguments[0].click();", element);
         } catch (StaleElementReferenceException e) {
             // If the element becomes stale, re-find it and attempt the click again.
             WebElement element = driver.findElement(locator);
-            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'}); arguments[0].click();", element);
         }
     }
 
@@ -127,26 +124,24 @@ public abstract class BasePage {
             return false;
         }
     }
-    private void handleModalOverlay() {
+    private void handleJoinPopup() {
         try {
-            // Use a very short wait to quickly check for the modal overlay's presence
-            WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(3));
-            By modalOverlayLocator = LocatorManager.getLocator("popups", "modalOverlay");
-            shortWait.until(ExpectedConditions.visibilityOfElementLocated(modalOverlayLocator));
-
-            // If the overlay is found, assume the close button is available and click it.
-            // Using jsClick to prevent further interceptions.
+            // Use a very short wait to see if the popup's close button becomes clickable.
+            WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(5)); // Increased wait for reliability
             By closeButtonLocator = LocatorManager.getLocator("popups", "joinTheTrybePopupCloseButton");
-            WebElement closeButton = driver.findElement(closeButtonLocator);
+
+            // Wait for the button to be clickable, which is the most reliable state.
+            WebElement closeButton = shortWait.until(ExpectedConditions.elementToBeClickable(closeButtonLocator));
+            
+            // Use a resilient JavaScript click to bypass any potential overlays.
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", closeButton);
 
         } catch (TimeoutException e) {
-            // Overlay did not appear within the short timeout, which is the expected case.
-            // Do nothing and let the test continue.
+            // This is the normal, expected outcome when the popup does not appear.
+            // Silently continue.
         } catch (Exception e) {
-            // Catch any other exception during popup handling to ensure test stability.
-            // We print the stack trace for debugging but don't re-throw, so the main test can proceed.
-            e.printStackTrace();
+            // Catch any other unexpected exception to prevent the test from crashing.
+            System.out.println("An unexpected error occurred while trying to close the 'Join The Trybe' popup: " + e.getMessage());
         }
     }
 }
