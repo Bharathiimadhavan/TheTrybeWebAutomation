@@ -4,9 +4,11 @@
   "addToCartButton": "xpath=//button[@data-testid='addtocart']",
   "findInStoreButton": "xpath=//button[@title='Find in Store']",
   "productTitleInPDP": "xpath=//div[@data-testid='Description']//h1",
-  "price": "xpath=(//div[contains(text(),'$')])[1]",
+  "price": "xpath=(//div[@data-testid='Description']//div[contains(text(),'$')])[1]",
   "sizeButton": "xpath=//div[@data-testid='sizeToggles']//button[normalize-space()='%s']",
   "addToBagNotification": "xpath=//*[@data-testid='sideBar']",
+  "miniCartProductName": "xpath=//*[@data-testid='sideBar']//div[contains(@class,'productName')]",
+  "miniCartProductPrice": "xpath=//*[@data-testid='sideBar']//div[contains(@class,'productFinalPrice')]",
   "goToBagButton": "xpath=//*[text()='Go to Bag']",
   "wishlistPDP": "xpath=(//button[@title='Add to Wishlist' and @type='button'])[1]",
   "removeFromWishlistPDP": "xpath=(//div/button[@id='addToBag']//following::div/button[@title='Remove from Wishlist'])"

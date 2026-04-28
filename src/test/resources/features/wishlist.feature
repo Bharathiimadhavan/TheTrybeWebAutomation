@@ -22,7 +22,7 @@ Feature: As a user, I want to I Wishlist a product and validate in the Wishlist 
     #And adds first product to wishlist from PLP
     And navigates to wishlist page
     And product "<productName>" should appear in the wishlist page
-
+   
     Examples:
       | productName              |
       | Copa Jnr Ap White Smooth |

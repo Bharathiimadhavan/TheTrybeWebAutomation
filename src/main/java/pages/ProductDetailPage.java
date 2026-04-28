@@ -1,7 +1,9 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import framework.LocatorManager;
 
@@ -79,6 +81,38 @@ public boolean isMiniCartDisplayed() {
         By notificationSidebar = LocatorManager.getLocator("pdp", "addToBagNotification");
         waitForElementToBeVisible(notificationSidebar);
         return driver.findElement(notificationSidebar).isDisplayed();
+    }
+
+    /**
+     * Returns the full text content of the mini-cart sidebar.
+     * Used to validate product name, size, price, and colour displayed after Add to Bag.
+     */
+    public String getSidebarText() {
+        By notificationSidebar = LocatorManager.getLocator("pdp", "addToBagNotification");
+        waitForElementToBeVisible(notificationSidebar);
+        return driver.findElement(notificationSidebar).getText();
+    }
+
+    /**
+     * Returns the product name text from the mini-cart sidebar.
+     */
+    public String getMiniCartProductName() {
+        By loc = LocatorManager.getLocator("pdp", "miniCartProductName");
+        waitForElementToBeVisible(loc);
+        return driver.findElement(loc).getText().trim();
+    }
+
+    /**
+     * Returns the product price from the mini-cart sidebar.
+     * Uses JS textContent to handle split DOM text nodes (e.g. "$" + "79.99").
+     */
+    public String getMiniCartProductPrice() {
+        By loc = LocatorManager.getLocator("pdp", "miniCartProductPrice");
+        waitForElementToBeVisible(loc);
+        WebElement el = driver.findElement(loc);
+        String raw = (String) ((JavascriptExecutor) driver)
+                .executeScript("return arguments[0].textContent;", el);
+        return raw.replaceAll("\\s+", "").trim();
     }
     public boolean afterPayLogoDisplayed()    {
         return driver.findElement(afterPayLogoInPDP).isDisplayed();

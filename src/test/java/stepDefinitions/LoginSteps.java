@@ -25,11 +25,9 @@ public class LoginSteps {
 
     @When("user opens login page")
     public void user_opens_login_page() {
-        //homePage.openLogin();
-        //loginPage = new LoginPage();
-        testContext.getHomePage().open();
+        testContext.getHomePage().openLogin();
+        loginPage = testContext.getLoginPage();
         log.info("Opened login page");
-        
     }
 
     @When("user logs in using valid credentials")

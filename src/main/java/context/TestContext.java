@@ -7,6 +7,21 @@ import pages.*;
 
 public class TestContext {
     private WebDriver driver;
+
+    // Temp storage for product details captured during test execution
+    private String capturedProductName;
+    private String capturedSelectedSize;
+    private String capturedPrice;
+
+    public String getCapturedProductName() { return capturedProductName; }
+    public void setCapturedProductName(String name) { this.capturedProductName = name; }
+
+    public String getCapturedSelectedSize() { return capturedSelectedSize; }
+    public void setCapturedSelectedSize(String size) { this.capturedSelectedSize = size; }
+
+    public String getCapturedPrice() { return capturedPrice; }
+    public void setCapturedPrice(String price) { this.capturedPrice = price; }
+
     private HomePage homePage;
     private SearchResultsPage searchResultsPage;
     private ProductDetailPage productDetailPage;
