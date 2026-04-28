@@ -2,6 +2,9 @@
   "cartItemContainer": "xpath=.//div[(@data-testid= 'cartItemSection')]",
   "productNameInCart": "xpath=//div[contains(@class, 'ProductTile-module_cartProductName')]",
   "productSizeInCart": "xpath=.//div[contains(@class, 'ProductTile-module_productSize__')]",
+  "productColourInCart": "xpath=//*[starts-with(normalize-space(text()),'Colour:')]",
+  "cartProductOriginalPrice": "xpath=//div[@data-testid='cartItemSection']//s[contains(text(),'$')]",
+  "cartDiscountLabel": "xpath=//*[contains(normalize-space(text()),'APPLIED')]",
   "checkoutButton": "xpath=//button[text()='Checkout']",
   "summaryTitle": "xpath=//p[text()='Summary']"
 }
